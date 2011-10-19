@@ -1,4 +1,4 @@
-from dbus.exceptions import DBusException
+from dbus.exceptions import DBusException/
 from dbus.mainloop.glib import DBusGMainLoop
 from xml.dom import minidom
 import dbus
@@ -6,7 +6,7 @@ import logging
 logging.disable(logging.CRITICAL)
 
 def findInterfaces(bus, path):
-    introspect = sessionBus.get_object(bus, path).Introspect()
+    introspect = sessionBus.get_object(bus, path).Introspect(dbus_interface = 'org.freedesktop.DBus.Introspectable')
     dom = minidom.parseString(introspect)
 
     # Gather all interfaces & methods
@@ -17,7 +17,7 @@ def findInterfaces(bus, path):
 
 def findPaths(bus, path = "/"):
     try:
-        introspect = sessionBus.get_object(bus, path).Introspect()
+        introspect = sessionBus.get_object(bus, path).Introspect(dbus_interface = 'org.freedesktop.DBus.Introspectable')
         dom = minidom.parseString(introspect)
         dom = dom.documentElement # Ignore the root node
 
