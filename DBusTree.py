@@ -1,4 +1,4 @@
-from dbus.exceptions import DBusException/
+from dbus.exceptions import DBusException
 from dbus.mainloop.glib import DBusGMainLoop
 from xml.dom import minidom
 import dbus
